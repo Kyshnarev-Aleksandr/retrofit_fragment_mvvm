@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.kushnarev.food_shop_app.POJO.Photos_POJO;
 import com.kushnarev.food_shop_app.R;
@@ -36,6 +38,8 @@ public class BlankFragment extends Fragment {
 
     PostviewModel postviewModel;
 
+    Button button1, button2, button3;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,16 +53,51 @@ public class BlankFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
 
+        button1 = view.findViewById(R.id.button1);
+        button2 = view.findViewById(R.id.button2);
+        button3 = view.findViewById(R.id.button3);
+
         recyclerView = view.findViewById(R.id.recycleView);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ImageAdapter(postsList);
         recyclerView.setAdapter(adapter);
 
+        ClickButton();
+
         fetchPosts();
 
 
         return view;
+    }
+
+    private void ClickButton() {
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutManager = new GridLayoutManager(getContext(), 2);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutManager = new GridLayoutManager(getContext(), 3);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
 
     private void fetchPosts() {
@@ -72,10 +111,5 @@ public class BlankFragment extends Fragment {
                 adapter.getPostsList(photos_pojos);
             }
         });
-
-
-
-        adapter.notifyDataSetChanged();
-
     }
 }

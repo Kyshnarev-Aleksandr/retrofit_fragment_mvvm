@@ -2,11 +2,12 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="3dp">
+    app:cardElevation="3dp"
+    android:padding="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,8 +18,7 @@
             android:id="@+id/image"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:layout_constraintStart_toEndOf="@id/tvBody"
-            android:layout_marginStart="25sp"/>
+            />
 
 
         <TextView
@@ -26,8 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="This is body text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:layout_toEndOf="@+id/image"
+            android:layout_below="@+id/tvTitle"
+            android:padding="5dp"
+            android:layout_marginStart="10dp"
 
             />
 
@@ -38,9 +40,18 @@
             android:text="Title"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+           android:layout_toEndOf="@+id/image"
+            android:padding="5dp"
+            android:layout_marginStart="10dp"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/price_button"
+            android:text="От 599"/>
 
 
 

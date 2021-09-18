@@ -1,5 +1,6 @@
 package com.kushnarev.food_shop_app.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -29,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class BlankFragment extends Fragment {
+public class FoodFragment extends Fragment {
 
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
@@ -74,24 +75,47 @@ public class BlankFragment extends Fragment {
     private void ClickButton() {
 
         button1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
+                button1.setBackgroundResource(R.drawable.top_navigation);
+                button1.setTextColor(R.color.neon);
+                button2.setBackgroundResource(R.color.white);
+                button2.setTextColor(R.color.gray);
+                button3.setBackgroundResource(R.color.white);
+                button3.setTextColor(R.color.gray);
+
                 layoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(layoutManager);
                 adapter.notifyDataSetChanged();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
+                button2.setBackgroundResource(R.drawable.top_navigation);
+                button2.setTextColor(R.color.neon);
+                button3.setBackgroundResource(R.color.white);
+                button3.setTextColor(R.color.gray);
+                button1.setBackgroundResource(R.color.white);
+                button1.setTextColor(R.color.gray);
+
                 layoutManager = new GridLayoutManager(getContext(), 2);
                 recyclerView.setLayoutManager(layoutManager);
                 adapter.notifyDataSetChanged();
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
+                button3.setBackgroundResource(R.drawable.top_navigation);
+                button3.setTextColor(R.color.neon);
+                button1.setBackgroundResource(R.color.white);
+                button1.setTextColor(R.color.gray);
+                button2.setBackgroundResource(R.color.white);
+                button2.setTextColor(R.color.gray);
                 layoutManager = new GridLayoutManager(getContext(), 3);
                 recyclerView.setLayoutManager(layoutManager);
                 adapter.notifyDataSetChanged();
